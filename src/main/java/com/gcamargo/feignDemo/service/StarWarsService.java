@@ -1,7 +1,7 @@
 package com.gcamargo.feignDemo.service;
 
 import com.gcamargo.feignDemo.exception.NotFoundException;
-import com.gcamargo.feignDemo.model.Integration.PlanetResponse;
+import com.gcamargo.feignDemo.model.dto.PlanetResponseDto;
 import com.gcamargo.feignDemo.model.dto.PlanetDto;
 import com.gcamargo.feignDemo.service.Integration.StarWarsClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +16,18 @@ public class StarWarsService {
     private StarWarsClient starWarsClient;
 
     public List<PlanetDto> getPlanets(){
-        PlanetResponse planetResponse = starWarsClient.getPlanets();
-        validatePlanetResponse(planetResponse);
-        return planetResponse.getResults();
+        PlanetResponseDto planetResponseDto = starWarsClient.getPlanets();
+        validatePlanetResponse(planetResponseDto);
+        return planetResponseDto.getResults();
     }
     public PlanetDto findPlanetByName(String name){
-        PlanetResponse planetResponse = starWarsClient.findPlanetByName(name);
-        validatePlanetResponse(planetResponse);
-        return planetResponse.getResults().get(0);
+        PlanetResponseDto planetResponseDto = starWarsClient.findPlanetByName(name);
+        validatePlanetResponse(planetResponseDto);
+        return planetResponseDto.getResults().get(0);
     }
 
-    private void validatePlanetResponse(PlanetResponse planetResponse){
-        if(planetResponse.getCount() == 0){
+    private void validatePlanetResponse(PlanetResponseDto planetResponseDto){
+        if(planetResponseDto.getCount() == 0){
             throw new NotFoundException("Nenhum planeta encontrado");
         }
     }

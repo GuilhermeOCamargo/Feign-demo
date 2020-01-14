@@ -1,0 +1,4 @@
+integration:
+  starWars:
+    url: https://swapi.co/api/
+    value: star-wars

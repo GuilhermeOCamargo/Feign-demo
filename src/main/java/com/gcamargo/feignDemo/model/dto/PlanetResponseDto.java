@@ -1,11 +1,9 @@
-package com.gcamargo.feignDemo.model.Integration;
-
-import com.gcamargo.feignDemo.model.dto.PlanetDto;
+package com.gcamargo.feignDemo.model.dto;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class PlanetResponse implements Serializable {
+public class PlanetResponseDto implements Serializable {
     private static final long serialVersionUID = 1L;
     private Long count;
     private String next;
